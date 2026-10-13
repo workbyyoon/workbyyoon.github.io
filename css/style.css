@@ -79,7 +79,7 @@ nav a:hover::after,nav a.active::after,.header-mail:hover::after{width:100%;}
 .hero-grid{position:relative;width:100%;min-height:72vh;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr auto;gap:28px;align-items:center;padding:64px;}
 .eyebrow{align-self:start;margin-top:50px;color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;}
 .hero-note{align-self:start;justify-self:end;max-width:390px;margin:0;color:var(--muted);font-size:15px;line-height:1.65;text-align:right;letter-spacing:.03em;}
-.hero-title{grid-column:1/-1;margin:0;  font-family: "Arial Black", "Impact", sans-serif;font-size:clamp(92px,14.2vw,250px);line-height:.78;letter-spacing:-.075em;font-weight:600;text-transform:uppercase;}
+.hero-title{grid-column:1/-1;margin:0;  font-family: "Archivo Black", sans-serif; font-size:clamp(92px,14.2vw,250px);line-height:.78;letter-spacing:-.075em;font-weight:600;text-transform:uppercase;}
 .hero-title span{  display:block; width:max-content; overflow:visible;}
 .hero-title span:nth-child(1){margin-right:auto;}
 .hero-title span:nth-child(2){margin-left:18vw;padding-left:0;}
@@ -303,8 +303,11 @@ nav a:hover::after,nav a.active::after,.header-mail:hover::after{width:100%;}
   .design-intro{font-size:14px;margin:-5px 0 26px}
   .process-item{grid-template-columns:1fr;gap:12px;}
   .process-item h3{font-size:38px;}
+  #process .section-title { font-size: clamp(36px, 9vw, 58px);letter-spacing: -0.06em;white-space: nowrap;}
+  #process .section-title br {display: none;}
+  #process .section-title br::after {content: " ";}
   .contact{padding:92px 18px 22px;}
-  .contact-inner{min-height:60vh;border-radius:24px;padding:26px;}
+  .contact-inner{min-height:70vh;border-radius:24px;padding:26px;}
   .contact-bottom{display:grid;gap:12px;}
 }
 
