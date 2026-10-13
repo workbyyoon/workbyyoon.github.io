@@ -303,7 +303,7 @@ nav a:hover::after,nav a.active::after,.header-mail:hover::after{width:100%;}
   .design-intro{font-size:14px;margin:-5px 0 26px}
   .process-item{grid-template-columns:1fr;gap:12px;}
   .process-item h3{font-size:38px;}
-  #process .section-title {letter-spacing: -0.06em;white-space: nowrap;}
+  #process .section-title {font-family: var(--title);font-weight: 600;font-size: clamp(36px, 9vw, 54px);line-height: 1;letter-spacing: -0.075em;white-space: nowrap;}
   #process .section-title br {display: none;}
   #process .section-title br::after {content: " ";}
   .contact{padding:92px 18px 22px;}
