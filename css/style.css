@@ -271,7 +271,7 @@ nav a:hover::after,nav a.active::after,.header-mail:hover::after{width:100%;}
   .fixed-index{display:none;}
   .section{min-height:auto;padding:92px 0;}
   .section-head{display:block;margin-bottom:38px;}
-  .section-title{margin-top:14px;font-size:clamp(50px,15vw,84px);}
+  .section-title{margin-top:14px; margin-bottom: 30px;font-size:clamp(50px,15vw,84px);}
   .hero{padding:0 18px;min-height:100vh;}
   .hero::before{inset:74px 18px 22px;border-radius:22px;}
   .hero-grid{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:24px;gap:24px;}
@@ -303,7 +303,7 @@ nav a:hover::after,nav a.active::after,.header-mail:hover::after{width:100%;}
   .design-intro{font-size:14px;margin:-5px 0 26px}
   .process-item{grid-template-columns:1fr;gap:12px;}
   .process-item h3{font-size:38px;}
-  #process .section-title { font-size: clamp(36px, 9vw, 58px);letter-spacing: -0.06em;white-space: nowrap;}
+  #process .section-title {letter-spacing: -0.06em;white-space: nowrap;}
   #process .section-title br {display: none;}
   #process .section-title br::after {content: " ";}
   .contact{padding:92px 18px 22px;}
