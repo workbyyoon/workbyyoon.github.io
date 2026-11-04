@@ -4,22 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Jung Jung Yoon Web Designer & Publisher Portfolio">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="JUNG YOON | Portfolio">
-<meta property="og:description" content="Web Design & Publishing Portfolio">
-<meta property="og:url" content="https://workbyyoon.github.io/">
-<meta property="og:image" content="https://workbyyoon.github.io/images/og-thumbnail.png?v=2">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="JUNG YOON | Portfolio">
-<meta name="twitter:image" content="https://workbyyoon.github.io/images/og-thumbnail.png">
-
 <title>J²Y | Web Designer Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/reset.css">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -54,6 +44,7 @@
     <a href="#skills">Skills</a>
     <a href="#websites">Websites</a>
     <a href="#details">Details</a>
+    <a href="#cardnews">Card News</a>
     <a href="#contact">Contact</a>
   </nav>
   <a href="mailto:workbyyoon@gmail.com" class="header-mail">Mail</a>
@@ -352,6 +343,28 @@
     </div>
   </section>
 
+  <section id="cardnews" class="section cardnews" data-label="Card News">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-num">06 / Card News</p>
+        <h2 class="section-title reveal" data-aos="fade-up">Card<br>News</h2>
+      </div>
+      <p class="design-intro reveal" data-aos="fade-up">이미지와 타이포그래피를 활용해 브랜드의 메시지를 전달하는 카드뉴스 디자인 작업입니다.</p>
+      <button class="cardnews-work reveal" type="button" data-cardnews-open aria-label="JINA SKIN LAB 카드뉴스 전체 보기">
+        <span class="cardnews-work__images">
+          <span><img src="images/card-news/sample_cover.png" loading="lazy" alt="카드뉴스 첫 번째 이미지"></span>
+          <span><img src="images/card-news/sample_review.png" loading="lazy" alt="카드뉴스 두 번째 이미지"></span>
+        </span>
+        <span class="cardnews-work__content">
+          <span class="cardnews-work__eyebrow">01 / SOCIAL CONTENT</span>
+          <strong>JINA SKIN LAB</strong>
+          <span>스킨케어 브랜드의 분위기를 표현한 에디토리얼 카드뉴스 디자인 샘플입니다.</span>
+          <span class="cardnews-work__action">VIEW CARDS <span aria-hidden="true">↗</span></span>
+        </span>
+      </button>
+    </div>
+  </section>
+
   <section id="process" class="section process" data-label="Process">
     <div class="container two-col">
       <div class="sticky-title"><p class="section-num">07 / Process</p><h2 class="section-title reveal" data-aos="fade-up">How I<br>Work</h2></div>
@@ -373,16 +386,28 @@
   </section>
 </main>
 
-<div class="image-modal" id="imageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="상세페이지 미리보기">
+<div class="image-modal" id="imageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="작업물 전체 보기">
   <div class="image-modal__backdrop" data-modal-close></div>
-  <div class="image-modal__panel">
-    <button type="button" class="image-modal__close" data-modal-close aria-label="팝업 닫기">×</button>
-    <div class="image-modal__head">
-      <p>Product Storytelling Preview</p>
-      <h3 id="modalTitle">Detail Page</h3>
+  <div class="image-modal__panel" tabindex="-1">
+    <div class="image-modal__topbar">
+      <span class="image-modal__brand"><span class="image-modal__brand-dot" aria-hidden="true"></span> J²Y / WORK ARCHIVE</span>
+      <button type="button" class="image-modal__close" data-modal-close aria-label="패널 닫기"><span>CLOSE</span><span aria-hidden="true">×</span></button>
     </div>
-    <div class="image-modal__scroll">
-      <img id="modalImage" src="" alt="상세페이지 확대 이미지">
+    <div class="image-modal__scroll" id="modalScroll" tabindex="0" aria-label="프로젝트 소개 및 전체 디자인 스크롤 보기">
+      <div class="image-modal__introduction">
+        <div class="image-modal__kicker">
+          <span class="image-modal__eyebrow" id="modalCategory">COMMERCE DESIGN</span>
+          <span class="image-modal__count" id="modalNumber">01 / 03</span>
+        </div>
+        <h3 id="modalTitle">DETAIL PAGE</h3>
+        <p class="image-modal__description" id="modalDescription">제품을 소개하는 상세페이지 디자인 작업입니다.</p>
+        <div class="image-modal__meta">
+          <span class="image-modal__meta-label">PROJECT INFO</span>
+          <div class="image-modal__meta-value"><span id="modalType">DETAIL PAGE</span><span class="image-modal__meta-separator" aria-hidden="true">/</span><span id="modalScope">COMMERCE DESIGN</span></div>
+        </div>
+        <div class="image-modal__view-label"><span class="image-modal__view-line" aria-hidden="true"></span><span>FULL PROJECT VIEW</span><span aria-hidden="true">↓</span></div>
+      </div>
+      <div id="modalGallery" class="image-modal__gallery"><img id="modalImage" src="" alt="상세페이지 전체 원본"></div>
     </div>
   </div>
 </div>

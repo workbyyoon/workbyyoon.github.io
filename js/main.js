@@ -215,42 +215,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const modal = document.querySelector("#imageModal");
+  const modalPanel = modal?.querySelector(".image-modal__panel");
   const modalImage = document.querySelector("#modalImage");
+  const modalGallery = document.querySelector("#modalGallery");
+  const modalScroll = document.querySelector("#modalScroll");
   const modalTitle = document.querySelector("#modalTitle");
-  const modalCloseEls = document.querySelectorAll("[data-modal-close]");
+  const modalCategory = document.querySelector("#modalCategory");
+  const modalDescription = document.querySelector("#modalDescription");
+  const modalType = document.querySelector("#modalType");
+  const modalNumber = document.querySelector("#modalNumber");
+  const modalScope = document.querySelector("#modalScope");
+  const projectInfo = {
+    "images/detail/nfuture_detail.png": {name:"NFUTURE", number:"01", description:"제품의 주요 특징과 사용 정보를 명확하게 전달하도록 구성한 커머스 상세페이지 디자인입니다."},
+    "images/detail/WSB_detail.png": {name:"WSBKOREA", number:"02", description:"제품 이미지를 중심으로 전달력을 강화한 커머스 상세페이지 디자인입니다."},
+    "images/detail/electricboy_detail.png": {name:"ELECTRICBOY", number:"03", description:"시각적 주목도와 제품 정보의 흐름을 고려해 구성한 커머스 상세페이지 디자인입니다."}
+  };
+  let previousFocus = null;
+  let clearImageTimer = null;
 
-  function openModal(src, title) {
-    if (!modal || !modalImage) return;
-    modalImage.src = src;
-    modalImage.alt = `${title || "Detail Page"} 확대 이미지`;
-    if (modalTitle) modalTitle.textContent = title || "Detail Page";
+  function openModal(src, title, cardImages) {
+    if (!modal || !modalImage || !modalGallery) return;
+    clearTimeout(clearImageTimer);
+    previousFocus = document.activeElement;
+    const info = projectInfo[src];
+    if (modalTitle) modalTitle.textContent = cardImages ? "JINA SKIN LAB" : (info?.name || title || "DETAIL PAGE");
+    if (modalCategory) modalCategory.textContent = cardImages ? "EDITORIAL / CARD NEWS" : "COMMERCE / DETAIL PAGE";
+    if (modalNumber) modalNumber.textContent = cardImages ? "01 / 01" : `${info?.number || "01"} / 03`;
+    if (modalDescription) modalDescription.textContent = cardImages
+      ? "브랜드의 메시지를 이미지와 타이포그래피로 구성한 카드뉴스 작업입니다."
+      : (info?.description || "제품의 정보를 효과적으로 전달하기 위한 상세페이지 디자인입니다.");
+    if (modalType) modalType.textContent = cardImages ? "CARD NEWS" : "DETAIL PAGE";
+    if (modalScope) modalScope.textContent = cardImages ? "EDITORIAL DESIGN" : "COMMERCE DESIGN";
+    modalGallery.classList.toggle("is-cardnews", Boolean(cardImages));
+    modalGallery.replaceChildren();
+    const sources = cardImages || [src];
+    sources.forEach((source, index) => {
+      const image = document.createElement("img");
+      image.src = source;
+      image.alt = `${title || "작업물"} 전체 원본 ${index + 1}`;
+      image.decoding = "async";
+      modalGallery.appendChild(image);
+    });
+    if (modalScroll) modalScroll.scrollTop = 0;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
     if (lenis) lenis.stop();
+    modalPanel?.focus({preventScroll:true});
   }
 
   function closeModal() {
-    if (!modal || !modalImage) return;
+    if (!modal?.classList.contains("is-open")) return;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
-    setTimeout(() => { modalImage.src = ""; }, 250);
     if (lenis) lenis.start();
+    clearImageTimer = setTimeout(() => { modalGallery?.replaceChildren(); }, 380);
+    if (previousFocus?.isConnected) previousFocus.focus({preventScroll:true});
   }
 
   document.querySelectorAll(".detail-modal-trigger").forEach((button) => {
     button.addEventListener("click", () => {
-      const src = button.dataset.full;
-      const title = button.dataset.title;
-      if (!src) return;
-      openModal(src, title);
+      if (button.dataset.full) openModal(button.dataset.full, button.dataset.title);
     });
   });
-
-  modalCloseEls.forEach((el) => el.addEventListener("click", closeModal));
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
+  document.querySelector("[data-cardnews-open]")?.addEventListener("click", () => {
+    openModal(null, "JINA SKIN LAB", ["images/card-news/sample_cover.png", "images/card-news/sample_review.png"]);
+  });
+  modal?.querySelectorAll("[data-modal-close]").forEach((el) => el.addEventListener("click", closeModal));
+  document.addEventListener("keydown", (event) => {
+    if (!modal?.classList.contains("is-open")) return;
+    if (event.key === "Escape") closeModal();
+    if (event.key === "Tab") {
+      // Keep keyboard focus inside the drawer.
+      const closeButton = modal.querySelector(".image-modal__close");
+      if (event.shiftKey && document.activeElement === modalPanel) {
+        event.preventDefault(); closeButton?.focus();
+      } else if (!event.shiftKey && document.activeElement === closeButton) {
+        event.preventDefault(); modalPanel?.focus();
+      }
+    }
   });
 
   document.querySelectorAll(".filter-ui button").forEach((button) => {

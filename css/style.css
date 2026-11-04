@@ -419,3 +419,103 @@ body.modal-open{overflow:hidden;}
 }
 
 @media(max-width:768px){.design-intro{font-size:14px;margin:-5px 0 26px}}
+
+
+/* Right-side project drawer: original Commerce Design cards intentionally unchanged. */
+.image-modal{display:block!important;visibility:hidden;pointer-events:none;opacity:0;position:fixed;inset:0;padding:0;z-index:20000;transition:opacity .28s ease,visibility .28s ease}
+.image-modal.is-open{visibility:visible;pointer-events:auto;opacity:1}
+.image-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(7px)}
+.image-modal__panel{position:absolute;right:0;top:0;bottom:0;width:min(760px,90vw);height:100%;max-height:none;border-radius:0;border:0;border-left:1px solid rgba(255,255,255,.22);background:#0d0d0d;box-shadow:-24px 0 95px rgba(0,0,0,.6);transform:translateX(100%);transition:transform .36s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.image-modal.is-open .image-modal__panel{transform:translateX(0)}
+.image-modal__head{flex:none;padding:31px 85px 23px 32px;border-bottom:1px solid rgba(255,255,255,.15)}
+.image-modal__head p{margin:0 0 10px;font-size:11px;letter-spacing:.15em}
+.image-modal__head h3{margin:0;font-size:clamp(25px,3vw,43px);line-height:1.04}
+.image-modal__close{top:25px;right:25px;z-index:10}
+.image-modal__scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;background:#f4f4f4;scrollbar-gutter:stable}
+.image-modal__gallery{width:100%;margin:0 auto}
+.image-modal__gallery img{display:block;width:100%;max-width:100%;height:auto;min-height:0;object-fit:initial;background:#fff}
+.image-modal__gallery img+img{margin-top:0}
+body.modal-open{overflow:hidden}
+.cardnews{background:#101110}
+.cardnews-work{width:100%;padding:0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,1fr);background:linear-gradient(120deg,#232823,#141615);color:var(--white);border:1px solid var(--line);border-radius:28px;overflow:hidden;text-align:left;cursor:pointer;transition:border-color .25s,transform .25s}
+.cardnews-work:hover{border-color:rgba(215,255,100,.52);transform:translateY(-5px)}
+.cardnews-work:focus-visible,.image-modal__close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cardnews-work__images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:18px;background:#252a25}
+.cardnews-work__images>span{min-width:0;aspect-ratio:1;overflow:hidden;border-radius:12px;background:#e9e9e9}
+.cardnews-work__images img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.cardnews-work:hover img{transform:scale(1.035)}
+.cardnews-work__content{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:18px;padding:clamp(22px,4vw,48px)}
+.cardnews-work__eyebrow{font-size:11px;font-weight:800;letter-spacing:.15em;color:var(--accent)}
+.cardnews-work__content strong{font-family:var(--title);font-size:clamp(27px,3vw,46px);letter-spacing:-.05em}
+.cardnews-work__content>span:nth-child(3){font-size:14px;line-height:1.8;color:var(--muted);word-break:keep-all}
+.cardnews-work__action{margin-top:10px;padding-bottom:7px;border-bottom:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.1em}
+.image-modal__gallery.is-cardnews{background:#f2f2f0;padding:18px;display:grid;gap:18px;justify-items:center}
+.image-modal__gallery.is-cardnews img{width:auto;max-width:100%;height:auto;max-height:none;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+@media(max-width:760px){
+ .image-modal__panel{width:100vw;max-width:none}
+ .image-modal__head{padding:25px 76px 19px 22px}
+ .image-modal__close{top:19px;right:18px}
+ .cardnews-work{grid-template-columns:1fr}
+ .cardnews-work__content{padding:26px}
+ .cardnews-work__images{gap:9px;padding:12px}
+ .image-modal__gallery.is-cardnews{padding:12px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){.image-modal,.image-modal__panel{transition:none!important}}
+
+/* Project case-study introduction within the right-side drawer. */
+.image-modal__panel{background:#f7f6f2;color:#191b18}
+.image-modal__topbar{display:flex;justify-content:space-between;align-items:center;min-height:92px;padding:19px 32px 19px 48px;background:#f7f6f2;border-bottom:1px solid #deddd7;flex:none}
+.image-modal__brand{font-size:11px;font-weight:800;letter-spacing:.12em;color:#242722}
+.image-modal__close{position:static;display:flex;align-items:center;justify-content:center;gap:16px;width:auto;height:auto;padding:17px 21px;background:#191c18;border:0;border-radius:999px;color:white;font-family:inherit;font-size:19px;line-height:1;white-space:nowrap}
+.image-modal__close span:first-child{font-size:10px;font-weight:800;letter-spacing:.07em}
+.image-modal__scroll{background:#f7f6f2;scrollbar-gutter:auto}
+.image-modal__introduction{padding:68px clamp(26px,6.3vw,64px) 34px;background:#f7f6f2}
+.image-modal__eyebrow{margin:0 0 25px;font-size:11px;letter-spacing:.16em;color:#737b5e;font-weight:800}
+.image-modal__introduction h3{margin:0;overflow-wrap:anywhere;color:#191c18;font-family:var(--title),Arial,sans-serif;font-size:clamp(44px,6.2vw,76px);font-weight:700;letter-spacing:-.075em;line-height:1.03}
+.image-modal__description{margin:29px 0 36px;font-size:15px;line-height:1.9;color:#70746d;word-break:keep-all}
+.image-modal__facts{display:grid;grid-template-columns:1fr 1fr;gap:26px;border-top:1px solid #d8d8d1;border-bottom:1px solid #d8d8d1;padding:22px 0}
+.image-modal__facts>div{display:flex;flex-direction:column;gap:9px}
+.image-modal__facts span{font-size:10px;letter-spacing:.1em;color:#93968c}
+.image-modal__facts strong{font-size:12px;font-weight:800;color:#1e211e}
+.image-modal__gallery{padding:0 clamp(18px,6vw,64px) 55px;background:#f7f6f2}
+.image-modal__gallery img{width:100%;height:auto;min-height:0;background:white}
+.image-modal__gallery.is-cardnews{padding:0 clamp(18px,6vw,64px) 55px;background:#f7f6f2}
+@media(max-width:760px){.image-modal__topbar{min-height:76px;padding:13px 17px 13px 21px}.image-modal__close{padding:15px 17px}.image-modal__introduction{padding:45px 24px 26px}.image-modal__description{font-size:13px;margin:21px 0 27px}.image-modal__facts{gap:14px}.image-modal__gallery,.image-modal__gallery.is-cardnews{padding:0 16px 35px}}
+
+/* J²Y portfolio-native drawer treatment (intentionally distinct from the agency case-study layout). */
+.image-modal__panel{background:var(--bg);color:var(--white);border-left:1px solid rgba(215,255,100,.28)}
+.image-modal__topbar{min-height:78px;padding:16px clamp(22px,4.3vw,42px);background:#090909;border-bottom:1px solid var(--line);gap:24px}
+.image-modal__brand{display:inline-flex;align-items:center;gap:11px;font-size:11px;font-weight:800;letter-spacing:.15em;color:var(--white)}
+.image-modal__brand-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px rgba(215,255,100,.32)}
+.image-modal__close{position:static;display:inline-flex;align-items:center;gap:17px;padding:12px 14px 12px 19px;background:transparent;border:1px solid var(--line-2);color:var(--white);border-radius:999px;font-size:22px;transition:background .2s,color .2s,border-color .2s}
+.image-modal__close:hover{background:var(--accent);color:#080808;border-color:var(--accent)}
+.image-modal__close span:first-child{font-size:10px;font-weight:800;letter-spacing:.12em}
+.image-modal__scroll{background:var(--bg);scrollbar-gutter:auto}
+.image-modal__introduction{position:relative;overflow:hidden;padding:54px clamp(24px,5.5vw,58px) 28px;background:var(--bg)}
+.image-modal__introduction::after{content:"";position:absolute;right:-92px;top:38px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(215,255,100,.085),transparent 70%);pointer-events:none}
+.image-modal__kicker{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:27px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.image-modal__eyebrow{margin:0;font-size:10px;letter-spacing:.18em;color:var(--accent);font-weight:800}
+.image-modal__count{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--muted)}
+.image-modal__introduction h3{position:relative;z-index:1;margin:0;overflow-wrap:anywhere;color:var(--white);font-family:var(--title);font-size:clamp(44px,5.8vw,76px);font-weight:700;letter-spacing:-.073em;line-height:.95;text-transform:uppercase}
+.image-modal__description{max-width:540px;margin:26px 0 31px;color:#a8a49d;font-size:14px;line-height:1.85;word-break:keep-all}
+.image-modal__meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.image-modal__meta-label{font-size:10px;letter-spacing:.14em;font-weight:800;color:var(--muted-2)}
+.image-modal__meta-value{display:flex;flex-wrap:wrap;align-items:center;gap:11px;color:var(--white);font-size:11px;font-weight:800;letter-spacing:.08em}
+.image-modal__meta-separator{color:var(--accent)}
+.image-modal__view-label{display:flex;align-items:center;gap:12px;margin-top:34px;font-size:10px;font-weight:800;letter-spacing:.15em;color:var(--accent)}
+.image-modal__view-line{flex:1;height:1px;background:rgba(215,255,100,.35)}
+.image-modal__gallery,.image-modal__gallery.is-cardnews{background:var(--bg);padding:0 clamp(22px,5.5vw,58px) 56px}
+.image-modal__gallery img{display:block;width:100%;height:auto;background:white}
+.image-modal__gallery.is-cardnews{display:grid;gap:16px}
+.image-modal__gallery.is-cardnews img{max-width:100%;background:white}
+@media(max-width:760px){
+  .image-modal__topbar{min-height:70px;padding:12px 18px}
+  .image-modal__brand{font-size:9px}
+  .image-modal__close{padding:10px 12px}
+  .image-modal__introduction{padding:42px 22px 24px}
+  .image-modal__introduction h3{font-size:clamp(39px,10vw,64px)}
+  .image-modal__description{font-size:13px;margin:23px 0 25px}
+  .image-modal__meta{align-items:flex-start;flex-direction:column;gap:12px}
+  .image-modal__view-label{margin-top:26px}
+  .image-modal__gallery,.image-modal__gallery.is-cardnews{padding:0 14px 38px}
+}
